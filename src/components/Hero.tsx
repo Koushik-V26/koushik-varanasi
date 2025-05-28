@@ -1,18 +1,16 @@
-
 import React from 'react';
 import { Button } from '@/components/ui/button';
 import { ArrowDown, Code, Database, TrendingUp, Sparkles } from 'lucide-react';
-
 const Hero = () => {
   const scrollToAbout = () => {
     const aboutSection = document.getElementById('about');
     if (aboutSection) {
-      aboutSection.scrollIntoView({ behavior: 'smooth' });
+      aboutSection.scrollIntoView({
+        behavior: 'smooth'
+      });
     }
   };
-
-  return (
-    <section id="home" className="min-h-screen flex items-center justify-center pt-20 px-6 relative overflow-hidden">
+  return <section id="home" className="min-h-screen flex items-center justify-center pt-20 px-6 relative overflow-hidden">
       {/* Background Elements */}
       <div className="absolute inset-0 opacity-10">
         <div className="absolute top-20 left-10 w-72 h-72 bg-accent-blue rounded-full blur-3xl animate-pulse"></div>
@@ -41,9 +39,7 @@ const Hero = () => {
             <div className="space-y-4">
               <h1 className="text-6xl lg:text-8xl font-bold font-poppins leading-tight">
                 <span className="block text-white tracking-tight">Koushik</span>
-                <span className="block text-gradient bg-gradient-to-r from-accent-blue via-accent-green to-accent-yellow bg-clip-text text-transparent animate-pulse">
-                  Kumar Varanasi
-                </span>
+                <span className="block text-gradient bg-gradient-to-r from-accent-blue via-accent-green to-accent-yellow bg-clip-text text-transparent animate-pulse px-0 text-left"> Varanasi</span>
               </h1>
               
               {/* Animated Typewriter Effect */}
@@ -88,18 +84,13 @@ const Hero = () => {
 
             {/* CTA Buttons */}
             <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start pt-4">
-              <Button 
-                onClick={scrollToAbout}
-                className="group bg-gradient-to-r from-accent-blue to-accent-green hover:from-accent-blue/80 hover:to-accent-green/80 text-white px-8 py-4 rounded-full font-medium transition-all duration-300 shadow-lg hover:shadow-accent-blue/25 hover:scale-105"
-              >
+              <Button onClick={scrollToAbout} className="group bg-gradient-to-r from-accent-blue to-accent-green hover:from-accent-blue/80 hover:to-accent-green/80 text-white px-8 py-4 rounded-full font-medium transition-all duration-300 shadow-lg hover:shadow-accent-blue/25 hover:scale-105">
                 <span>Explore My Work</span>
                 <ArrowDown className="ml-2 w-4 h-4 group-hover:translate-y-1 transition-transform" />
               </Button>
-              <Button 
-                variant="outline" 
-                onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
-                className="border-2 border-accent-green/50 text-accent-green hover:bg-accent-green hover:text-white px-8 py-4 rounded-full font-medium transition-all duration-300 backdrop-blur-sm hover:scale-105"
-              >
+              <Button variant="outline" onClick={() => document.getElementById('contact')?.scrollIntoView({
+              behavior: 'smooth'
+            })} className="border-2 border-accent-green/50 text-accent-green hover:bg-accent-green hover:text-white px-8 py-4 rounded-full font-medium transition-all duration-300 backdrop-blur-sm hover:scale-105">
                 Get In Touch
               </Button>
             </div>
@@ -119,11 +110,7 @@ const Hero = () => {
                   
                   {/* Profile Picture */}
                   <div className="relative w-72 h-72 lg:w-88 lg:h-88 rounded-full overflow-hidden border-4 border-white/10">
-                    <img 
-                      src="https://i.postimg.cc/9Fz52zcs/IMG-20241026-WA0002.jpg" 
-                      alt="Koushik Kumar Varanasi"
-                      className="w-full h-full object-cover object-center"
-                    />
+                    <img src="https://i.postimg.cc/9Fz52zcs/IMG-20241026-WA0002.jpg" alt="Koushik Kumar Varanasi" className="w-full h-full object-cover object-center" />
                   </div>
                   
                   {/* Floating Tech Icons */}
@@ -144,7 +131,9 @@ const Hero = () => {
               </div>
               
               {/* Orbiting Elements */}
-              <div className="absolute inset-0 animate-spin" style={{ animationDuration: '20s' }}>
+              <div className="absolute inset-0 animate-spin" style={{
+              animationDuration: '20s'
+            }}>
                 <div className="absolute -top-2 left-1/2 w-3 h-3 bg-accent-blue rounded-full shadow-lg"></div>
                 <div className="absolute top-1/2 -right-2 w-2 h-2 bg-accent-green rounded-full shadow-lg"></div>
                 <div className="absolute -bottom-2 left-1/2 w-2 h-2 bg-accent-yellow rounded-full shadow-lg"></div>
@@ -163,8 +152,6 @@ const Hero = () => {
           <ArrowDown className="w-4 h-4 text-gray-400" />
         </div>
       </div>
-    </section>
-  );
+    </section>;
 };
-
 export default Hero;
