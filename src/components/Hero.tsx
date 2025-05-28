@@ -1,7 +1,7 @@
 
 import React from 'react';
 import { Button } from '@/components/ui/button';
-import { ArrowDown } from 'lucide-react';
+import { ArrowDown, Code, Database, TrendingUp, Sparkles } from 'lucide-react';
 
 const Hero = () => {
   const scrollToAbout = () => {
@@ -12,64 +12,151 @@ const Hero = () => {
   };
 
   return (
-    <section id="home" className="min-h-screen flex items-center justify-center pt-20 px-6">
-      <div className="container mx-auto">
-        <div className="grid lg:grid-cols-2 gap-12 items-center">
+    <section id="home" className="min-h-screen flex items-center justify-center pt-20 px-6 relative overflow-hidden">
+      {/* Background Elements */}
+      <div className="absolute inset-0 opacity-10">
+        <div className="absolute top-20 left-10 w-72 h-72 bg-accent-blue rounded-full blur-3xl animate-pulse"></div>
+        <div className="absolute bottom-20 right-10 w-96 h-96 bg-accent-green rounded-full blur-3xl animate-pulse delay-1000"></div>
+      </div>
+      
+      {/* Floating Icons */}
+      <div className="absolute inset-0 pointer-events-none">
+        <Code className="absolute top-32 left-1/4 w-6 h-6 text-accent-blue/30 animate-bounce delay-300" />
+        <Database className="absolute top-40 right-1/3 w-5 h-5 text-accent-green/30 animate-bounce delay-700" />
+        <TrendingUp className="absolute bottom-40 left-1/3 w-7 h-7 text-accent-yellow/30 animate-bounce delay-500" />
+        <Sparkles className="absolute top-1/2 right-1/4 w-4 h-4 text-accent-blue/40 animate-bounce delay-1000" />
+      </div>
+
+      <div className="container mx-auto relative z-10">
+        <div className="grid lg:grid-cols-2 gap-16 items-center">
           {/* Text Content */}
-          <div className="text-center lg:text-left animate-slide-in-left">
-            <h1 className="text-5xl lg:text-7xl font-bold mb-6 font-poppins">
-              <span className="block text-white">Koushik</span>
-              <span className="block text-gradient">Kumar Varanasi</span>
-            </h1>
-            
-            <div className="text-xl lg:text-2xl text-gray-300 mb-8 space-y-2">
-              <div>Data Science Enthusiast</div>
-              <div className="text-accent-blue">Future Analyst</div>
-              <div>Passionate about AI & Automation</div>
+          <div className="text-center lg:text-left space-y-8 animate-slide-in-left">
+            {/* Badge */}
+            <div className="inline-flex items-center gap-2 px-4 py-2 bg-accent-blue/10 border border-accent-blue/20 rounded-full text-accent-blue text-sm font-medium backdrop-blur-sm">
+              <div className="w-2 h-2 bg-accent-blue rounded-full animate-pulse"></div>
+              Available for Opportunities
             </div>
 
-            <p className="text-gray-400 text-lg mb-8 max-w-lg mx-auto lg:mx-0">
+            {/* Main Heading */}
+            <div className="space-y-4">
+              <h1 className="text-6xl lg:text-8xl font-bold font-poppins leading-tight">
+                <span className="block text-white tracking-tight">Koushik</span>
+                <span className="block text-gradient bg-gradient-to-r from-accent-blue via-accent-green to-accent-yellow bg-clip-text text-transparent animate-pulse">
+                  Kumar Varanasi
+                </span>
+              </h1>
+              
+              {/* Animated Typewriter Effect */}
+              <div className="text-2xl lg:text-3xl text-gray-300 font-medium space-y-3">
+                <div className="flex items-center gap-3">
+                  <div className="w-1 h-8 bg-accent-blue animate-pulse"></div>
+                  <span>Data Science Enthusiast</span>
+                </div>
+                <div className="flex items-center gap-3">
+                  <div className="w-1 h-8 bg-accent-green animate-pulse delay-300"></div>
+                  <span className="text-accent-blue">Future Analyst</span>
+                </div>
+                <div className="flex items-center gap-3">
+                  <div className="w-1 h-8 bg-accent-yellow animate-pulse delay-500"></div>
+                  <span>Passionate about AI & Automation</span>
+                </div>
+              </div>
+            </div>
+
+            {/* Description */}
+            <p className="text-gray-400 text-xl leading-relaxed max-w-2xl mx-auto lg:mx-0">
               B.Tech student passionate about transforming data into insights and building 
-              innovative solutions with AI and automation technologies.
+              innovative solutions with <span className="text-accent-blue font-medium">AI</span> and 
+              <span className="text-accent-green font-medium"> automation</span> technologies.
             </p>
 
-            <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
+            {/* Stats */}
+            <div className="flex flex-wrap gap-8 justify-center lg:justify-start text-center">
+              <div className="space-y-1">
+                <div className="text-3xl font-bold text-accent-blue">2+</div>
+                <div className="text-gray-400 text-sm">Years Learning</div>
+              </div>
+              <div className="space-y-1">
+                <div className="text-3xl font-bold text-accent-green">5+</div>
+                <div className="text-gray-400 text-sm">Projects Built</div>
+              </div>
+              <div className="space-y-1">
+                <div className="text-3xl font-bold text-accent-yellow">1</div>
+                <div className="text-gray-400 text-sm">Active Internship</div>
+              </div>
+            </div>
+
+            {/* CTA Buttons */}
+            <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start pt-4">
               <Button 
                 onClick={scrollToAbout}
-                className="bg-accent-blue hover:bg-accent-blue/80 text-white px-8 py-3 rounded-full font-medium transition-all duration-300 glow-effect"
+                className="group bg-gradient-to-r from-accent-blue to-accent-green hover:from-accent-blue/80 hover:to-accent-green/80 text-white px-8 py-4 rounded-full font-medium transition-all duration-300 shadow-lg hover:shadow-accent-blue/25 hover:scale-105"
               >
-                Learn More
+                <span>Explore My Work</span>
+                <ArrowDown className="ml-2 w-4 h-4 group-hover:translate-y-1 transition-transform" />
               </Button>
               <Button 
                 variant="outline" 
                 onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
-                className="border-accent-green text-accent-green hover:bg-accent-green hover:text-white px-8 py-3 rounded-full font-medium transition-all duration-300"
+                className="border-2 border-accent-green/50 text-accent-green hover:bg-accent-green hover:text-white px-8 py-4 rounded-full font-medium transition-all duration-300 backdrop-blur-sm hover:scale-105"
               >
                 Get In Touch
               </Button>
             </div>
           </div>
 
-          {/* Profile Image */}
+          {/* Enhanced Profile Section */}
           <div className="flex justify-center lg:justify-end animate-slide-in-right">
-            <div className="relative">
-              <div className="w-80 h-80 lg:w-96 lg:h-96 rounded-full bg-gradient-to-br from-accent-blue to-accent-green p-1">
-                <div className="w-full h-full rounded-full bg-dark-bg flex items-center justify-center">
-                  <div className="w-72 h-72 lg:w-88 lg:h-88 rounded-full bg-gradient-to-br from-gray-700 to-gray-800 flex items-center justify-center text-6xl font-bold text-white">
+            <div className="relative group">
+              {/* Outer Glow Ring */}
+              <div className="absolute inset-0 w-96 h-96 bg-gradient-to-r from-accent-blue via-accent-green to-accent-yellow rounded-full opacity-20 blur-2xl group-hover:opacity-30 transition-opacity duration-500"></div>
+              
+              {/* Main Profile Container */}
+              <div className="relative w-80 h-80 lg:w-96 lg:h-96 rounded-full bg-gradient-to-br from-accent-blue via-accent-green to-accent-yellow p-1 group-hover:scale-105 transition-transform duration-500">
+                <div className="w-full h-full rounded-full bg-dark-bg flex items-center justify-center relative overflow-hidden">
+                  {/* Inner Background Pattern */}
+                  <div className="absolute inset-0 bg-gradient-to-br from-gray-800/50 to-gray-900/50 rounded-full"></div>
+                  
+                  {/* Profile Content */}
+                  <div className="relative w-72 h-72 lg:w-88 lg:h-88 rounded-full bg-gradient-to-br from-gray-700 to-gray-800 flex items-center justify-center text-6xl font-bold text-white border-4 border-white/10">
                     KV
+                  </div>
+                  
+                  {/* Floating Tech Icons */}
+                  <div className="absolute inset-0">
+                    <div className="absolute top-4 right-8 w-8 h-8 bg-accent-blue/20 rounded-full flex items-center justify-center backdrop-blur-sm animate-bounce">
+                      <Code className="w-4 h-4 text-accent-blue" />
+                    </div>
+                    <div className="absolute bottom-8 left-4 w-8 h-8 bg-accent-green/20 rounded-full flex items-center justify-center backdrop-blur-sm animate-bounce delay-300">
+                      <Database className="w-4 h-4 text-accent-green" />
+                    </div>
                   </div>
                 </div>
               </div>
-              <div className="absolute -bottom-4 -right-4 w-20 h-20 bg-accent-yellow rounded-full flex items-center justify-center">
-                <span className="text-2xl">🚀</span>
+              
+              {/* Status Badge */}
+              <div className="absolute -bottom-4 -right-4 w-24 h-24 bg-gradient-to-r from-accent-yellow to-accent-green rounded-full flex items-center justify-center shadow-lg hover:scale-110 transition-transform duration-300 border-4 border-dark-bg">
+                <span className="text-3xl animate-bounce">🚀</span>
+              </div>
+              
+              {/* Orbiting Elements */}
+              <div className="absolute inset-0 animate-spin" style={{ animationDuration: '20s' }}>
+                <div className="absolute -top-2 left-1/2 w-3 h-3 bg-accent-blue rounded-full shadow-lg"></div>
+                <div className="absolute top-1/2 -right-2 w-2 h-2 bg-accent-green rounded-full shadow-lg"></div>
+                <div className="absolute -bottom-2 left-1/2 w-2 h-2 bg-accent-yellow rounded-full shadow-lg"></div>
+                <div className="absolute top-1/2 -left-2 w-3 h-3 bg-accent-blue rounded-full shadow-lg"></div>
               </div>
             </div>
           </div>
         </div>
 
-        {/* Scroll Indicator */}
-        <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
-          <ArrowDown className="w-6 h-6 text-gray-400" />
+        {/* Enhanced Scroll Indicator */}
+        <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 flex flex-col items-center gap-3 animate-bounce">
+          <div className="text-gray-400 text-sm font-medium">Scroll to explore</div>
+          <div className="w-6 h-10 border-2 border-gray-600 rounded-full flex justify-center">
+            <div className="w-1 h-3 bg-accent-blue rounded-full mt-2 animate-pulse"></div>
+          </div>
+          <ArrowDown className="w-4 h-4 text-gray-400" />
         </div>
       </div>
     </section>
