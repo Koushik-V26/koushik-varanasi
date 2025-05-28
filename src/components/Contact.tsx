@@ -1,11 +1,10 @@
-
 import React, { useState } from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { useToast } from '@/hooks/use-toast';
-import { Linkedin, Mail, Phone, Send, MessageCircle } from 'lucide-react';
+import { Linkedin, Mail, Phone, Send, MessageCircle, Github } from 'lucide-react';
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -121,6 +120,27 @@ const Contact = () => {
                         className="text-gray-300 text-sm hover:text-accent-yellow transition-colors"
                       >
                         linkedin.com/in/koushik-varanasi
+                      </a>
+                    </div>
+                  </div>
+                </CardContent>
+              </Card>
+
+              <Card className="group bg-gradient-to-br from-dark-card to-dark-card/80 border-gray-700 hover:border-gray-400/50 card-hover backdrop-blur-sm">
+                <CardContent className="p-4">
+                  <div className="flex items-center relative">
+                    <div className="w-12 h-12 bg-gray-400/20 rounded-full flex items-center justify-center mr-4 group-hover:scale-110 transition-transform">
+                      <Github className="w-6 h-6 text-gray-400" />
+                    </div>
+                    <div>
+                      <p className="text-gray-400 font-medium">GitHub</p>
+                      <a 
+                        href="https://github.com/Koushik-V26" 
+                        target="_blank" 
+                        rel="noopener noreferrer"
+                        className="text-gray-300 text-sm hover:text-gray-400 transition-colors"
+                      >
+                        github.com/Koushik-V26
                       </a>
                     </div>
                   </div>
