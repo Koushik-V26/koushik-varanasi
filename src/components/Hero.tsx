@@ -117,9 +117,13 @@ const Hero = () => {
                   {/* Inner Background Pattern */}
                   <div className="absolute inset-0 bg-gradient-to-br from-gray-800/50 to-gray-900/50 rounded-full"></div>
                   
-                  {/* Profile Content */}
-                  <div className="relative w-72 h-72 lg:w-88 lg:h-88 rounded-full bg-gradient-to-br from-gray-700 to-gray-800 flex items-center justify-center text-6xl font-bold text-white border-4 border-white/10">
-                    KV
+                  {/* Profile Picture */}
+                  <div className="relative w-72 h-72 lg:w-88 lg:h-88 rounded-full overflow-hidden border-4 border-white/10">
+                    <img 
+                      src="https://i.postimg.cc/9Fz52zcs/IMG-20241026-WA0002.jpg" 
+                      alt="Koushik Kumar Varanasi"
+                      className="w-full h-full object-cover object-center"
+                    />
                   </div>
                   
                   {/* Floating Tech Icons */}
