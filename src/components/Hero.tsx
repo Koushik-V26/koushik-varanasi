@@ -149,13 +149,13 @@ const Hero = () => {
           </div>
         </div>
 
-        {/* Enhanced Scroll Indicator */}
-        <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 flex flex-col items-center gap-3 animate-bounce">
-          <div className="text-gray-400 text-sm font-medium">Scroll to explore</div>
-          <div className="w-6 h-10 border-2 border-gray-600 rounded-full flex justify-center">
+        {/* Enhanced Scroll Indicator - Centered for all screen sizes */}
+        <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 flex flex-col items-center gap-3 animate-bounce w-full">
+          <div className="text-gray-400 text-sm font-medium text-center">Scroll to explore</div>
+          <div className="w-6 h-10 border-2 border-gray-600 rounded-full flex justify-center mx-auto">
             <div className="w-1 h-3 bg-accent-blue rounded-full mt-2 animate-pulse"></div>
           </div>
-          <ArrowDown className="w-4 h-4 text-gray-400" />
+          <ArrowDown className="w-4 h-4 text-gray-400 mx-auto" />
         </div>
       </div>
     </section>
