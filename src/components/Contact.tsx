@@ -1,3 +1,4 @@
+
 import React, { useState } from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
@@ -5,6 +6,7 @@ import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { useToast } from '@/hooks/use-toast';
 import { Linkedin, Mail, Phone, Send, MessageCircle, Github } from 'lucide-react';
+import emailjs from '@emailjs/browser';
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -12,9 +14,10 @@ const Contact = () => {
     email: '',
     message: ''
   });
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const { toast } = useToast();
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     
     // Simple form validation
@@ -27,14 +30,39 @@ const Contact = () => {
       return;
     }
 
-    // In a real application, you would send this data to a server
-    toast({
-      title: "Message Sent!",
-      description: "Thank you for your message. I'll get back to you soon!",
-    });
+    setIsSubmitting(true);
 
-    // Reset form
-    setFormData({ name: '', email: '', message: '' });
+    try {
+      // Send email using EmailJS
+      await emailjs.send(
+        'service_fm3m8an', // Service ID
+        'template_puejy7n', // Template ID
+        {
+          from_name: formData.name,
+          from_email: formData.email,
+          message: formData.message,
+          to_name: 'Koushik', // Your name
+        },
+        'b6kuve84GdBvmOx41' // Public key
+      );
+
+      toast({
+        title: "Message Sent!",
+        description: "Thank you for your message. I'll get back to you soon!",
+      });
+
+      // Reset form
+      setFormData({ name: '', email: '', message: '' });
+    } catch (error) {
+      console.error('EmailJS error:', error);
+      toast({
+        title: "Error",
+        description: "Failed to send message. Please try again or contact me directly.",
+        variant: "destructive"
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
@@ -173,6 +201,7 @@ const Contact = () => {
                       placeholder="Enter your full name"
                       value={formData.name}
                       onChange={handleChange}
+                      disabled={isSubmitting}
                       className="bg-gray-800/50 border-gray-600 text-white placeholder-gray-400 focus:border-accent-green focus:ring-accent-green/20 backdrop-blur-sm"
                     />
                   </div>
@@ -188,6 +217,7 @@ const Contact = () => {
                       placeholder="your.email@example.com"
                       value={formData.email}
                       onChange={handleChange}
+                      disabled={isSubmitting}
                       className="bg-gray-800/50 border-gray-600 text-white placeholder-gray-400 focus:border-accent-green focus:ring-accent-green/20 backdrop-blur-sm"
                     />
                   </div>
@@ -203,16 +233,18 @@ const Contact = () => {
                       placeholder="Tell me about your project or just say hello..."
                       value={formData.message}
                       onChange={handleChange}
+                      disabled={isSubmitting}
                       className="bg-gray-800/50 border-gray-600 text-white placeholder-gray-400 focus:border-accent-green focus:ring-accent-green/20 resize-none backdrop-blur-sm"
                     />
                   </div>
 
                   <Button 
                     type="submit"
-                    className="w-full bg-gradient-to-r from-accent-green to-accent-blue hover:from-accent-green/80 hover:to-accent-blue/80 text-white py-3 rounded-full font-medium transition-all duration-300 glow-effect group"
+                    disabled={isSubmitting}
+                    className="w-full bg-gradient-to-r from-accent-green to-accent-blue hover:from-accent-green/80 hover:to-accent-blue/80 text-white py-3 rounded-full font-medium transition-all duration-300 glow-effect group disabled:opacity-50 disabled:cursor-not-allowed"
                   >
-                    <span>Send Message</span>
-                    <Send className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                    <span>{isSubmitting ? 'Sending...' : 'Send Message'}</span>
+                    <Send className={`ml-2 w-4 h-4 transition-transform ${isSubmitting ? 'animate-pulse' : 'group-hover:translate-x-1'}`} />
                   </Button>
                 </form>
               </CardContent>
